@@ -1,14 +1,18 @@
-# terraform-module-template
+# terraform-ssb-workload-identity
 
-This is a template repo, meant for use when creating new Terraform modules.
+This is a Terraform module for creating Google Workload Identity Service Accounts.
 
 ## Usage
 
-[Create a repo based on this template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template).
+See [the example module](./examples/main.tf) for an example of setting up workload identity and giving access to a bucket.
 
-The names for common Terraform modules and the repos containing them is typically on the form `terraform-ssb-<module_specific_name>`, e.g. `terraform-ssb-buckets`.
+**Note:** For the workload identity to work, you have to annotate the Kubernetes service account with the email of the created GCP service account. The email is provided as output from this module. This can be done using the HelmRelease by specifying it in `spec.values`:
 
-When you have created your module repo, go through the README and edit it so the content is suitable for your module.
+```yaml
+serviceAccount:
+  annotations:
+    iam.gke.io/gcp-service-account: "wi-test-app-sa-wi@dev-bip.iam.gserviceaccount.com"
+```
 
 ## Contributing
 
@@ -39,22 +43,26 @@ terraform-docs markdown . --indent=3 --anchor=false
 <!-- BEGINNING OF AUTO-GENERATED DOCS USING terraform-docs -->
 ### Requirements
 
-| Name | Version |
-|------|---------|
-| terraform | >= 1.0.0 |
-| google | >= 4.9.0 |
+No requirements.
 
 ### Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| google | 4.31.0 |
 
 ### Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| module-usage-example | ../ | n/a |
 
 ### Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [google_storage_bucket.wi_module_test_bucket](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket) | resource |
+| [google_storage_bucket_iam_member.wi_module_test_bucket_member](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_iam_member) | resource |
 
 ### Inputs
 
