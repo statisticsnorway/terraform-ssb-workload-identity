@@ -43,32 +43,42 @@ terraform-docs markdown . --indent=3 --anchor=false
 <!-- BEGINNING OF AUTO-GENERATED DOCS USING terraform-docs -->
 ### Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| terraform | >= 1.0.0 |
+| google | >= 4.9.0 |
 
 ### Providers
 
 | Name | Version |
 |------|---------|
-| google | 4.31.0 |
+| google | >= 4.9.0 |
 
 ### Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| module-usage-example | ../ | n/a |
+No modules.
 
 ### Resources
 
 | Name | Type |
 |------|------|
-| [google_storage_bucket.wi_module_test_bucket](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket) | resource |
-| [google_storage_bucket_iam_member.wi_module_test_bucket_member](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_iam_member) | resource |
+| [google_service_account.wi_service_account](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_account) | resource |
+| [google_service_account_iam_member.wi_k8s_member](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_account_iam_member) | resource |
 
 ### Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| k8s\_namespace | The K8s namespace where the application runs. Usually your team name. | `string` | n/a | yes |
+| k8s\_project\_id | The GCP project where the K8s cluster runs. Usually staging-bip or prod-bip. | `string` | n/a | yes |
+| k8s\_service\_account | The name of the K8s service account for the application. If created by using the ssb-chart Helm chart, this is: <app-name>-sa. | `string` | n/a | yes |
+| name | The name of the GCP WI service account to be created. Optional; defaults to <k8s\_service\_account>-wi | `string` | `null` | no |
+| project\_id | The GCP project where the GCP WI service account will be created. Optional; defaults to the provider's project | `string` | `null` | no |
 
 ### Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| gcp\_service\_account\_email | The email for the created GCP service account. Can be used to grant roles on GCP resources. |
+
 <!-- END OF AUTO-GENERATED DOCS USING terraform-docs -->
