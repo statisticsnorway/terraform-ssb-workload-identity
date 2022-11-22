@@ -32,6 +32,11 @@ terraform-compliance - <https://terraform-compliance.com/>
 
 Write Behavior Driven Development (BDD) tests as documented [here](https://terraform-compliance.com/pages/bdd-references/). Tests can be written alongside examples by defining features in .feature-files.
 
+#### Example
+
+- Run `terraform plan` and write output to `plan.out`: `terraform -chdir=examples plan -out=plan.out`
+- Run `terraform-compliance` using the plan output: `terraform-compliance -f test -p examples/plan.out`
+
 ### Versioning
 
 This repository is versioned. We use [semantic versioning](https://semver.org/).
