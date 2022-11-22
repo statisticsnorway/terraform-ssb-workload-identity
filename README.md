@@ -18,13 +18,19 @@ serviceAccount:
 
 How to contribute:
 
-* Clone this repo, create a branch locally, make changes
+* Clone this repo, create a branch locally, make changes (remember to run the tests)
 * Run `terraform fmt -recursive` to format the Terraform code
 * Run `terraform-docs markdown . --indent=3 --anchor=false` and update the README file with the output
-* Push your branch to the remote repo, create a pull request (PR) and notify the repo owners (Stratus owns this template repo)
+* Push your branch to the remote repo, create a pull request (PR) and notify the repo owners (Stratus owns this repo)
 * The repo owners review the PR, approve and merge the changes
 * The repo owners create a new release (see [Versioning](#versioning))
-* The repo owners notify users of the new release and update the repos that they are resposible for
+* The repo owners notify users of the new release and update the repos that they are responsible for
+
+### Testing
+
+terraform-compliance - <https://terraform-compliance.com/>
+
+Write Behavior Driven Development (BDD) tests as documented [here](https://terraform-compliance.com/pages/bdd-references/). Tests can be written alongside examples by defining features in .feature-files.
 
 ### Versioning
 
