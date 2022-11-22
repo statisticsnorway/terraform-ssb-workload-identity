@@ -1,3 +1,6 @@
+# Don't include plan.out (typically used during testing)
+**/plan.out*
+
 # Local .terraform directories
 **/.terraform/*
 **/.terraform*
